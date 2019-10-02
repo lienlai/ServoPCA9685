@@ -37,6 +37,7 @@ namespace Servo {
     const STP_CHD_H = 1023
  
     let initialized = false
+	let freqInit = 50
  
     function i2cwrite(addr: number, reg: number, value: number) {
         let buf = pins.createBuffer(2)
@@ -51,9 +52,9 @@ namespace Servo {
         return val;
     }
  
-    function initPCA9685(): void {
+    function initPCA9685(freq: number): void {
         i2cwrite(PCA9685_ADDRESS, MODE1, 0x00)
-        setFreq(50);
+        setFreq(freq||freqInit);
         setPwm(0, 0, 4095);
         for (let idx = 1; idx < 16; idx++) {
             setPwm(idx, 0, 0);
@@ -135,6 +136,6 @@ namespace Servo {
         if (!initialized) {
             initPCA9685();
         }
-        setPwm(channel, on, off);
+		setPwm(channel, on, off);
     }
 }
