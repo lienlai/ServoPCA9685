@@ -122,4 +122,19 @@ namespace Servo {
         let value = pulse * 4096 / 20000;
         setPwm(channel, 0, value);
     }
+    
+    /**
+     * Servo Execute
+     * @param on/off [0-4095] of servo; eg: setPwm(channel, 0, 4095)
+    */
+    //% blockId=setServoOnOff block="Servo channel|%channel|on %on|off %off"
+    //% weight=85
+    //% on.min=0 on.max=4095
+    //% off.min=0 off.max=4095
+    export function ServoOnOff(channel: number,on: number,off: number): void {
+        if (!initialized) {
+            initPCA9685();
+        }
+        setPwm(channel, on, off);
+    }
 }
