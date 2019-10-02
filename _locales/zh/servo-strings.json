@@ -3,7 +3,7 @@
 	"Servo.setGeekServo|block": "舵机|%index|角度 %degree",
 	"Servo.setServoPulse|block": "舵机|%index|脉宽 %pulse",
 	"Servo.setServoOnOff|block": "舵机|%index|on %on|off %off",
-	"Servo.setStepperDir|block": "步进电机|%index|方向(正转True 反转False) %dir",
+	"Servo.setStepperDir|block": "步进电机|%index|方向(1正转 0反转) %dir",
 	"Servo.setStepperDegree|block": "步进电机|%index|角度 %degree",
 	"Servo.setStepperTurn|block": "步进电机|%index|圈数 %turn",
 	"Servo.setStepperDual|block": "双步进(角度) |M1 %degree1| M2 %degree2",
