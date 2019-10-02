@@ -66,7 +66,7 @@ namespace Servo {
     }
 
     let StepperDir = true
-	let stepperDirs:Array<boolean> = [true,true,true,true];
+    let stepperDirs:Array<boolean> = [true,true,true,true]
     let initialized = false
  
     function i2cwrite(addr: number, reg: number, value: number) {
