@@ -274,16 +274,22 @@ namespace Servo {
 
     /**
      * Stepper Car move forward
-     * @param distance Distance to move in cm; eg: 10, 20
-     * @param diameter diameter of wheel in mm; eg: 48
+     * @param distance Distance to move in mm; eg: 10, 20
+     * @param diameter diameter of wheel in mm; eg: 70
+     * @param circle circle of wheel in mm; eg: 210
     */
-    //% blockId=servo_StpCarMove block="步进电机 前进 |距离(cm) %distance|轮直径(mm) %diameter"
+    //% blockId=servo_StpCarMove block="步进电机 前进 |距离(mm) %distance|轮直径(mm) %diameter|轮周长(mm) %circle"
     //% weight=88
-    export function StpCarMove(distance: number, diameter: number): void {
+    export function StpCarMove(distance: number, diameter: number, circle:number): void {
         if (!initialized) {
             initPCA9685()
         }
-        let delay = 10240 * 10 * distance / 3 / diameter; // use 3 instead of pi
+        let delay = 1
+        if(circle){
+            delay = 10240 * distance / circle; // circle first
+        }else if(diameter){
+            delay = 10240 * distance / 3 / diameter; // use 3 instead of pi
+        }
         Stepper(1, delay > 0);
         Stepper(2, delay > 0);
         delay = Math.abs(delay);
@@ -294,8 +300,8 @@ namespace Servo {
     /**
      * Stepper Car turn by degree
      * @param turn Degree to turn; eg: 90, 180, 360
-     * @param diameter diameter of wheel in mm; eg: 48
-     * @param track track width of car; eg: 125
+     * @param diameter diameter of wheel in mm; eg: 70
+     * @param track track width of car; eg: 140
     */
     //% blockId=servo_StpCarTurn block="步进电机 转向 |角度 %turn|轮直径(mm) %diameter|轮距(mm) %track"
     //% weight=87
