@@ -168,7 +168,7 @@ namespace Servo {
     */
     //% blockId=servo_ServoPulse block="舵机|%index|脉宽 %pulse"
     //% weight=85
-    //% pulse.min=500 pulse.max=2500
+    //% pulse.min=500 pulse.max=4000
     export function ServoPulse(index: number,pulse: number): void {
         if (!initialized) {
             initPCA9685();
